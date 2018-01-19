@@ -1,7 +1,10 @@
-package model
+package main
 
-//LogFile : the configuration structure which defines a log forwarder
-type LogFile struct {
+type supervisor struct {
+	Files []logFile `json:"files"`
+}
+
+type logFile struct {
 	FileName      string `json:"file"`
 	SplitOn       string `json:"splitOn"`
 	OutputIndices []int  `json:"outputIndices"`

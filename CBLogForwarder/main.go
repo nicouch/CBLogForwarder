@@ -5,24 +5,37 @@ import (
 	"flag"
 	"fmt"
 	"io/ioutil"
-
-	model "github.com/nicouch/CBLogForwarder/model"
+	"os"
 )
 
-type supervisor struct {
-	Files []model.LogFile `json:"files"`
-}
+var (
+	config       string
+	selectedMode *int
+)
 
-var config string
+const (
+	stream = iota
+	batch
+)
 
 func main() {
 	flag.StringVar(&config, "configuration", "CBLogForwarder.conf", "configuration file")
+	selectedMode = flag.Int("mode", 0, "mode for reading file between stream (continuous) and batch (one shot)")
 	flag.Parse()
 
 	s, err := loadConfiguration(config)
 	if err != nil {
 		fmt.Println("invalid configuration")
 		return
+	}
+
+	switch *selectedMode {
+	case stream:
+		streamer(s)
+	case batch:
+		batcher(s)
+	default:
+		os.Exit(0)
 	}
 }
 

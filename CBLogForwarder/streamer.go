@@ -1,4 +1,4 @@
-package streamer
+package main
 
 import (
 	"fmt"
@@ -7,7 +7,7 @@ import (
 	"github.com/nicouch/gotail"
 )
 
-func stream() {
+func streamer(s supervisor) {
 	tails := make([]*gotail.Tail, 0)
 	for _, f := range s.Files {
 		tail, err := gotail.NewTail(f.FileName, gotail.Config{Timeout: 10, SplitOn: f.SplitOn, Output: f.OutputIndices})
