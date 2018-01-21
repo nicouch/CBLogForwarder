@@ -1,0 +1,12 @@
+hash: b1da5bfcdd96397158e3ef39edbd4211b0ccc12c15624d4a188e0dcaa0018cde
+updated: 2018-01-18T16:18:03.835279276+01:00
+imports:
+- name: github.com/nicouch/gotail
+  version: 25d23e1f5a4245d38f02f1ca7e7c1f352d323b7a
+- name: golang.org/x/sys
+  version: 810d7000345868fc619eb81f46307107118f4ae1
+  subpackages:
+  - unix
+- name: gopkg.in/fsnotify.v1
+  version: c2828203cd70a50dcccfb2761f8b1f8ceef9a8e9
+testImports: []
