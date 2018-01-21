@@ -1,0 +1,3 @@
+package: github.com/nicouch/CBLogForwarder
+import:
+- package: github.com/nicouch/gotail
